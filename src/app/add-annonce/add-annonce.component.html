@@ -1,0 +1,79 @@
+<mat-card>
+  <mat-card-content style="height: auto;">
+    <mat-card-title>Ajouter une annonce </mat-card-title>
+    <mat-card-subtitle>
+      <div>Informations propriétaire</div>
+      <form class="example-form">
+        
+          <mat-form-field class="example-full-width" style="width: 40%">
+            <input required matInput placeholder="Nom et prénom"  [errorStateMatcher]="matcher" name="nameProprietaire" [(ngModel)]="nameProp"> 
+            <mat-error>
+              Nom et prénom sont
+              <strong>obligatoires</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" style="width: 40%;left: 40px;">
+            <span matPrefix>+216 &nbsp;</span>
+            <input type="tel" matInput placeholder="Telephone" name="phoneProprietaire" required  [errorStateMatcher]="matcher" [(ngModel)]="phoneProp">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </form>
+        <div style="margin-top: 15px;">Informations maison</div>
+        <mat-form-field style="width: 40%;margin-top: 15px">
+          <mat-select placeholder="Catégorie" [formControl]="categorieControl" required [(ngModel)]="categorie">
+            <mat-option>--choisir une catégorie--</mat-option>
+            <mat-option *ngFor="let categorie of categories" [value]="categorie ">
+              {{categorie.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="categorieControl.hasError('required')">SVP choisir une catégorie</mat-error>
+        </mat-form-field>
+        <div>Emplacement</div>
+        <form class="example-form">
+        <mat-form-field style="width: 40%;margin-top: 10px">
+          <mat-select placeholder="Ville" [formControl]="villeControl" required [(ngModel)]="ville">
+            <mat-option>--choisir une ville--</mat-option>
+            <mat-option *ngFor="let ville of villes" [value]="ville" >
+              {{ville.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="villeControl.hasError('required')">SVP choisir votre ville</mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 40%;margin-top: 10px;left:50px;">
+          <mat-select placeholder="Région" [formControl]="villeControl" required [(ngModel)]="animal"> 
+            <mat-option>--choisir une région--</mat-option>
+            <mat-option *ngFor="let animal of animals" [value]="animal" >
+              {{animal.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="villeControl.hasError('required')">SVP choisir votre région</mat-error>
+        </mat-form-field>
+      </form>
+      <p>
+       
+        <mat-form-field class="example-full-width" style="width: 40%;">
+          <textarea matInput placeholder="Address" style="height: 110px;" [(ngModel)]="address"></textarea>
+        </mat-form-field>
+      </p>
+      <mat-form-field style="width:40%;">
+        <input matInput type="number" placeholder="Chambres" name="nbrePiece" [(ngModel)]="nbrePiece" >
+      </mat-form-field> <br>
+      <mat-form-field style="width:40%;">
+        <input matInput type="number" placeholder="Prix" name="prix" [(ngModel)]="prix" >
+      </mat-form-field>
+
+     
+       
+      <button mat-raised-button color="primary" style="right: 25px;
+      width: 155px;
+      position: absolute;
+      bottom: 25px;" (click)="addAnnonce()">Ajouter</button>
+
+    </mat-card-subtitle>
+
+
+
+
+
+  </mat-card-content>
+</mat-card>
