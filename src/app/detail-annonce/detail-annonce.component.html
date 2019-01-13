@@ -16,80 +16,102 @@
                 font-weight: 500;
                 font-family: serif;
                 font-size: 18px;
-                color: slategray;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="employee.address">
-   
-              </mat-form-field>
-              <img style="position: absolute;
+                color: slategray;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="category">
+
+      </mat-form-field>
+      <mat-checkbox style="margin-top: 58px;
+      margin-left: 135px;
+      position: absolute;color: black;
+      font-size: 17px;
+      font-style: initial;
+      font-weight: bold;
+      font-family: serif;" name="furnished" [(ngModel)]="furnished">Meublé</mat-checkbox>
+      <img style="position: absolute;
               top: 35px;
               right: 75px;" src="assets/images/prix.png">
-<div style="    font-size: 26px;
+      <div style="    font-size: 26px;
 position: absolute;
 top: 103px;
 font-weight: bold;
 font-family: serif;
-right: 143px;">500 Dt</div>
-      
+right: 143px;">{{prix}} Dt</div>
+
       <form class="example-form">
 
-          <mat-form-field style="margin-bottom: 10px;width: 40%;margin-top: 15px">
-              <label style="color: black;
+        <mat-form-field style="margin-bottom: 10px;width: 40%;margin-top: 15px">
+          <label style="color: black;
                       font-size: 17px;
                       font-style: initial;
                       font-weight: bold;
                       font-family: serif;">Ville : </label>
-              <input style="
+          <input style="
                       text-align: end;
                       font-weight: 500;
                       font-family: serif;
                       font-size: 18px;
-                      color: slategray;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="employee.address">
-            </mat-form-field>
-            <mat-form-field style="margin-bottom: 10px;width: 40%;margin-top: 15px;position: absolute;
+                      color: slategray;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="city">
+        </mat-form-field>
+        <mat-form-field style="margin-bottom: 10px;width: 40%;margin-top: 15px;position: absolute;
             right: 35px;">
-                <label style="color: black;
+          <label style="color: black;
                         font-size: 17px;
                         font-style: initial;
                         font-weight: bold;
                         font-family: serif;">Région : </label>
-                <input style="
+          <input style="
                         text-align: end;
                         font-weight: 500;
                         font-family: serif;
                         font-size: 18px;
-                        color: slategray;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="employee.address">
-              </mat-form-field>
+                        color: slategray;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="region">
+        </mat-form-field>
       </form>
 
 
       <mat-form-field class="example-full-width" style="width: 40%;">
-          <label style="color: black;
+        <label style="color: black;
           font-size: 17px;
           font-style: initial;
           font-weight: bold;
           font-family: serif;">Adresse : </label>
-        <textarea [(ngModel)]="employee.empName" disabled matInput  style="
+        <textarea [(ngModel)]="address" disabled matInput style="
         text-align: end;
         font-weight: 500;
         font-family: serif;
         font-size: 18px;
-        color: slategray;height: auto;"
-       ></textarea>
+        color: slategray;height: auto;"></textarea>
       </mat-form-field>
+      
       <mat-form-field style="margin-bottom: 10px;width: 40%;margin-top: 15px;position: absolute;
             right: 35px;">
-                <label style="color: black;
+        <label style="color: black;
                         font-size: 17px;
                         font-style: initial;
                         font-weight: bold;
                         font-family: serif;">Nombre du chambres : </label>
-                <input style="
+        <input style="
                         text-align: end;
                         font-weight: 500;
                         font-family: serif;
                         font-size: 18px;
-                        color: slategray;width: inherit;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="employee.address"> piéce(s)
-              </mat-form-field>
+                        color: slategray;width: inherit;" matInput disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="numberOfRooms"> piéce(s)
+      </mat-form-field>
 
+      <div>
+        <mat-form-field class="example-full-width">
+          <label style="color: black;
+            font-size: 17px;
+            font-style: initial;
+            font-weight: bold;
+            font-family: serif;">Description : </label>
+          <textarea [(ngModel)]="description" disabled matInput style="
+          text-align: end;
+          font-weight: 500;
+          font-family: serif;
+          font-size: 18px;
+          color: slategray;height: auto;"></textarea>
+        </mat-form-field>
+      </div>
 
       <div style="color: black;
       font-style: italic;
@@ -102,7 +124,7 @@ right: 143px;">500 Dt</div>
           font-weight: 500;
           font-family: serif;
           font-size: 18px;
-          color: slategray;" disabled  [ngModelOptions]="{standalone: true}" [(ngModel)]="employee.empName" matInput type="text">
+          color: slategray;" disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="employee.empName" matInput type="text">
         </mat-form-field>
         <mat-form-field class="example-full-width" style="width: 40%;left: 40px;">
           <span style="font-weight: 500;

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { AnnonceService } from '../../Service/annonceService';
+import { concat } from 'rxjs';
 
 export interface Animal {
   name: string;
@@ -19,15 +21,17 @@ export class AddAnnonceComponent implements OnInit {
   phoneProp :any;
   categorie : any;
   ville : any;
-  animal : any;
+  region : any;
   address : any;
   nbrePiece : any;
   prix : any;
+  furnished : any =false;
 
 
   categorieControl = new FormControl('', [Validators.required]);
   selectFormControl = new FormControl('', Validators.required);
   villeControl = new FormControl('', Validators.required);
+  regionControl = new FormControl('', Validators.required);
 
   categories: any[] = [
     {name: 'Appartement'},
@@ -62,15 +66,38 @@ export class AddAnnonceComponent implements OnInit {
    
   ];
 
+
+  
+  checked(event){
+    debugger;
+    console.log(event)
+    this.furnished = event.checked
+  }
+
   selectedFiles: FileList;
   progress: { percentage: number } = { percentage: 0 };
   currentFileUpload: any;
-  constructor(public route : ActivatedRoute,public dialog: MatDialog) {
+  regions: any = [];
+  constructor(public router : Router,public route : ActivatedRoute,public dialog: MatDialog, private annonceService : AnnonceService) {
     debugger
     console.log(this.route.snapshot.params);
-  
-  }
+    
 
+  }
+  onChange(event){
+debugger;
+if(this.ville.name == 'Sfax'){
+  this.regions = [
+     {name : 'region1'},
+     {name : 'region2'},
+     {name : 'region3'},
+     {name : 'region4'},
+     {name : 'region5'},
+     {name : 'region6'},
+ 
+   ]
+ }
+  }
   ngOnInit() {
   }
   onFileChanged(event) {
@@ -90,15 +117,34 @@ export class AddAnnonceComponent implements OnInit {
 
     
     debugger;
-    if(this.nameProp && this.phoneProp && this.address && this.animal && this.ville && this.categorie && this.nbrePiece && this.prix){
+    if(this.nameProp && this.phoneProp && this.address && this.region && this.ville && this.categorie && this.nbrePiece && this.prix){
       console.log("nom prop " + this.nameProp)
       console.log("phone prop " + this.phoneProp)
       console.log("adress " + this.address)
-      console.log("reg " + this.animal.name)
+      console.log("reg " + this.region.name)
       console.log("ville " + this.ville.name)
       console.log("cat " +this.categorie.name)
       console.log("chambre " +this.nbrePiece )
       console.log("prix " + this.prix)
+
+      var accommodation = {
+        "city" : this.ville.name,
+        "address" : this.address,
+        "numberOfRooms" : this.nbrePiece,
+        "furnished" :  this.furnished,
+        "images" : [],
+        "description" : "hfhbfjnjfhbnkk,f",
+        "prix": this.prix,
+        "category": this.categorie.name,
+        "country" : this.region.name
+      }
+      this.annonceService.addAnnonce(accommodation).subscribe(res => {
+        debugger;
+        console.log(res);
+        this.router.navigate(['/starter']);
+
+      })
+
     } else 
      {
       console.log("rrr")

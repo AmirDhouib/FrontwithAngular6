@@ -3,70 +3,30 @@
 <!-- ============================================================== -->
 <div fxLayout="row" fxLayoutWrap="wrap">
   <!-- column -->
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+  <div >
     <mat-card>
       <mat-card-content>
         <!-- Row -->
         <div fxLayout="row" fxLayoutWrap="wrap">
           <!-- column -->
-          <div style="width: 40%;">
+          <div style="width: 40%;" *ngFor="let accommodation of annoncesList ">
             <mat-card class="example-card">
               <mat-card-header>
-                <mat-card-title>Adresse</mat-card-title>
-                <mat-card-subtitle>Num tel</mat-card-subtitle>
+                <mat-card-title>{{accommodation.country}}  {{accommodation.city}}</mat-card-title>
+                <mat-card-subtitle>{{accommodation.city}}</mat-card-subtitle>
               </mat-card-header>
-              <img (click)="btnClick();" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="home" style="height: 150px; width:  150px;margin-left: 35px;">
-              <div style="float: right;
-              margin-top: 15px;
-              margin-right: 15px;">
-                Prix : 150 Dt
+              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
+              alt="home" style="height: 150px; width:  150px;margin-left: 35px;"
+               (click)="detail(accommodation)"
+               [routerLink]="['/progress', accommodation.id]"> 
+              <div style="position: absolute;
+              float: right;
+              top: 236px;
+              right: 15px;">
+                Prix : {{accommodation.prix}} Dt
               </div>
-
             </mat-card>
           </div>
-          <div style="width: 40%;">
-              <mat-card class="example-card">
-                <mat-card-header>
-                  <mat-card-title>Adresse</mat-card-title>
-                  <mat-card-subtitle>Num tel</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="home" style="height: 150px; width:  150px;margin-left: 35px;">
-                <div style="float: right;
-                margin-top: 15px;
-                margin-right: 15px;">
-                  Prix : 150 Dt
-                </div>
-  
-              </mat-card>
-            </div> <div style="width: 40%;">
-                <mat-card class="example-card">
-                  <mat-card-header>
-                    <mat-card-title>Adresse</mat-card-title>
-                    <mat-card-subtitle>Num tel</mat-card-subtitle>
-                  </mat-card-header>
-                  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="home" style="height: 150px; width:  150px;margin-left: 35px;">
-                  <div style="float: right;
-                  margin-top: 15px;
-                  margin-right: 15px;">
-                    Prix : 150 Dt
-                  </div>
-    
-                </mat-card>
-              </div>
-              <div style="width: 40%;">
-                  <mat-card class="example-card">
-                    <mat-card-header>
-                      <mat-card-title>Adresse</mat-card-title>
-                      <mat-card-subtitle>Num tel</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="home" style="height: 150px; width:  150px;margin-left: 35px;">
-                    <div style="float: right;
-                margin-top: 15px;
-                margin-right: 15px;">
-                  Prix : 150 Dt
-                </div>
-                  </mat-card>
-                </div>
         </div>
       </mat-card-content>
     </mat-card>
